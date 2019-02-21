@@ -10,6 +10,7 @@ SRCREV_FORMAT = "kernel"
 
 SRC_URI = "\
     ${KERNEL_REPO};protocol=${KERNEL_PROTOCOL};nobranch=1;name=kernel \
+    file://lkft.config;subdir=git/kernel/configs \
     file://distro-overrides.config;subdir=git/kernel/configs \
     file://systemd.config;subdir=git/kernel/configs \
 "
@@ -18,6 +19,7 @@ S = "${WORKDIR}/git"
 
 KERNEL_IMAGETYPE ?= "Image"
 KERNEL_CONFIG_FRAGMENTS += "\
+    ${S}/kernel/configs/lkft.config \
     ${S}/kernel/configs/distro-overrides.config \
     ${S}/kernel/configs/systemd.config \
 "
@@ -41,10 +43,20 @@ do_configure() {
         echo 'CONFIG_ARM_TI_CPUFREQ=y' >> ${B}/.config
         echo 'CONFIG_SERIAL_8250_OMAP=y' >> ${B}/.config
         echo 'CONFIG_POSIX_MQUEUE=y' >> ${B}/.config
-        # https://bugs.linaro.org/show_bug.cgi?id=3769
-        echo 'CONFIG_ARM_MODULE_PLTS=y' >> ${B}/.config
       ;;
       x86_64) # Default is x86_64_defconfig
+
+        echo 'CONFIG_IGB=y' >> ${B}/.config
+        # FIXME https://bugs.linaro.org/show_bug.cgi?id=3459
+        # x86 fails to build:
+        # | kernel-source/Makefile:938:
+        # *** "Cannot generate ORC metadata for CONFIG_UNWINDER_ORC=y,
+        # please install libelf-dev, libelf-devel or elfutils-libelf-devel".  Stop.
+        echo 'CONFIG_UNWINDER_FRAME_POINTER=y' >> ${B}/.config
+        echo '# CONFIG_UNWINDER_ORC is not set' >> ${B}/.config
+      ;;
+      i686)
+        cp ${S}/arch/x86/configs/i386_defconfig ${B}/.config
         echo 'CONFIG_IGB=y' >> ${B}/.config
         # FIXME https://bugs.linaro.org/show_bug.cgi?id=3459
         # x86 fails to build:
@@ -55,13 +67,6 @@ do_configure() {
         echo '# CONFIG_UNWINDER_ORC is not set' >> ${B}/.config
       ;;
     esac
-
-    # Make sure to enable NUMA
-    echo 'CONFIG_NUMA=y' >> ${B}/.config
-
-    # Enable KSM
-    # https://bugs.linaro.org/show_bug.cgi?id=3857#c3
-    echo 'CONFIG_KSM=y' >> ${B}/.config
 
     # Check for kernel config fragments. The assumption is that the config
     # fragment will be specified with the absolute path. For example:
