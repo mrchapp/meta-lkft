@@ -13,6 +13,7 @@ RDEPENDS_packagegroup-rpb-lkft = "\
     libgpiod \
     ${@bb.utils.contains("TUNE_ARCH", "arm", "", "numactl", d)} \
     perf \
+    qemu \
     tzdata \
     xz \
     "
