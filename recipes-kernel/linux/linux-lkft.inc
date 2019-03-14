@@ -25,8 +25,8 @@ python __anonymous () {
     
     devicetree = d.getVar('KERNEL_DEVICETREE', True) or ''
     if devicetree:
-    	depends = d.getVar("DEPENDS", True)
-    	d.setVar("DEPENDS", "%s dtc-native" % depends)
+        depends = d.getVar("DEPENDS", True)
+        d.setVar("DEPENDS", "%s dtc-native" % depends)
 }
 
 do_configure_prepend() {

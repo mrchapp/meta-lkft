@@ -1,4 +1,4 @@
-require linux.inc
+require linux-lkft.inc
 require kselftests.inc
 
 DESCRIPTION = "Generic Linux mainline kernel"

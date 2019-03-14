@@ -1,4 +1,4 @@
-require linux.inc
+require linux-lkft.inc
 require kselftests.inc
 require custom-kernel-info.inc
 
