@@ -196,6 +196,17 @@ do_configure_append() {
 	fi
 }
 
+# append DTB on DB410c
+QCOM_BOOTIMG_BUNDLE_DT = "0"
+do_compile_append_dragonboard-410c() {
+    if ! [ -e ${B}/arch/${ARCH}/boot/dts/${KERNEL_DEVICETREE} ] ; then
+        oe_runmake ${KERNEL_DEVICETREE}
+    fi
+    cp arch/${ARCH}/boot/${KERNEL_IMAGETYPE} arch/${ARCH}/boot/${KERNEL_IMAGETYPE}.backup
+    cat arch/${ARCH}/boot/${KERNEL_IMAGETYPE}.backup arch/${ARCH}/boot/dts/${KERNEL_DEVICETREE} > arch/${ARCH}/boot/${KERNEL_IMAGETYPE}
+    rm -f arch/${ARCH}/boot/${KERNEL_IMAGETYPE}.backup
+}
+
 # bitbake.conf only prepends PARALLEL make in tasks called do_compile, which isn't the case for compile_modules
 # So explicitly enable it for that in here
 EXTRA_OEMAKE = "${PARALLEL_MAKE} "
