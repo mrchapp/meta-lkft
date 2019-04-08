@@ -223,6 +223,7 @@ PACKAGES =+ "${KERNEL_PACKAGE_NAME}-devicetree-overlays"
 FILES_${KERNEL_PACKAGE_NAME}-devicetree-overlays = "/lib/firmware/*.dtbo /lib/firmware/*.dts"
 FILES_${KERNEL_PACKAGE_NAME}-devicetree += "/boot/*.dtb"
 
+DEPENDS += "coreutils-native"
 RDEPENDS_${KERNEL_PACKAGE_NAME}-image_append = " ${KERNEL_PACKAGE_NAME}-devicetree"
 RRECOMMENDS_${KERNEL_PACKAGE_NAME}-image_append = " ${KERNEL_PACKAGE_NAME}-devicetree-overlays"
 
