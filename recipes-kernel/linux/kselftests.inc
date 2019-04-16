@@ -11,6 +11,8 @@ export KST_INSTALL_PATH = "/opt/kselftests/default-in-kernel"
 KSELFTESTS_ARGS = "-i -C ${S}/tools/testing/selftests INSTALL_PATH=${D}${KST_INSTALL_PATH} CC="${CC}" LD="${LD}" ARCH=${ARCH}"
 
 do_compile_append() {
+    export KBUILD_OUTPUT="${B}"
+
     # Make sure to install the user space API used by some tests
     # but not properly declared as a build dependency
     ${MAKE} -C ${S} ARCH=${ARCH} headers_install
