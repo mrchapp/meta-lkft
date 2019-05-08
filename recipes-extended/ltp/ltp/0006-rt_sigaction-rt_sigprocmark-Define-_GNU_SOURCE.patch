@@ -1,0 +1,30 @@
+From ce6e77636613c59d5576e816d7be7bfa6e0ca0e9 Mon Sep 17 00:00:00 2001
+From: Khem Raj <raj.khem@gmail.com>
+Date: Fri, 8 Jan 2016 07:14:58 +0000
+Subject: [PATCH 06/10] rt_sigaction/rt_sigprocmark: Define _GNU_SOURCE
+
+Fixes musl build failure e.g.
+error: 'SA_NOMASK' undeclared here (not in a function)
+
+Signed-off-by: Khem Raj <raj.khem@gmail.com>
+
+Upstream-Status: Pending
+---
+ testcases/kernel/syscalls/rt_sigprocmask/rt_sigprocmask01.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/testcases/kernel/syscalls/rt_sigprocmask/rt_sigprocmask01.c b/testcases/kernel/syscalls/rt_sigprocmask/rt_sigprocmask01.c
+index 202e85386..471f18b7b 100644
+--- a/testcases/kernel/syscalls/rt_sigprocmask/rt_sigprocmask01.c
++++ b/testcases/kernel/syscalls/rt_sigprocmask/rt_sigprocmask01.c
+@@ -39,6 +39,7 @@
+ /*		    sigsetsize should indicate the size of a sigset_t type.   */
+ /******************************************************************************/
+ 
++#define _GNU_SOURCE
+ #include <stdio.h>
+ #include <signal.h>
+ #include <errno.h>
+-- 
+2.17.1
+

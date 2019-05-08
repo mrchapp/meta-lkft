@@ -1,0 +1,31 @@
+From 2469e24d35c2f38485f48d9eaed5ffa26fe957a2 Mon Sep 17 00:00:00 2001
+From: Khem Raj <raj.khem@gmail.com>
+Date: Fri, 8 Jan 2016 07:24:44 +0000
+Subject: [PATCH 07/10] rt_sigaction.h: Use sighandler_t instead of
+ __sighandler_t
+
+When _GNU_SOURCE is used then both typedefs are same and using
+sighandler_t makes it work on musl too
+
+Signed-off-by: Khem Raj <raj.khem@gmail.com>
+
+Upstream-Status: Pending
+---
+ testcases/kernel/syscalls/rt_sigsuspend/Makefile | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/testcases/kernel/syscalls/rt_sigsuspend/Makefile b/testcases/kernel/syscalls/rt_sigsuspend/Makefile
+index 37bc3a910..2ca7f7c81 100644
+--- a/testcases/kernel/syscalls/rt_sigsuspend/Makefile
++++ b/testcases/kernel/syscalls/rt_sigsuspend/Makefile
+@@ -19,4 +19,7 @@
+ top_srcdir		?= ../../../..
+ 
+ include $(top_srcdir)/include/mk/testcases.mk
++
++CFLAGS	+= -D_GNU_SOURCE
++
+ include $(top_srcdir)/include/mk/generic_leaf_target.mk
+-- 
+2.17.1
+

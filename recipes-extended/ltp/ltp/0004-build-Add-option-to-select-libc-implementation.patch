@@ -26,7 +26,7 @@ diff --git a/Makefile b/Makefile
 index 297f8e7..906b280 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -49,6 +49,11 @@ SKIP_IDCHECK		?= 0
+@@ -41,6 +41,11 @@ vpath %.mk		$(top_srcdir)/mk:$(top_srcdir)/mk/include
  UCLINUX			?= 0
  export UCLINUX
  
