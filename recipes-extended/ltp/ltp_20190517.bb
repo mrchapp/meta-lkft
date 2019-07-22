@@ -1,6 +1,6 @@
 SUMMARY = "Linux Test Project"
 DESCRIPTION = "The Linux Test Project is a joint project with SGI, IBM, OSDL, and Bull with a goal to deliver test suites to the open source community that validate the reliability, robustness, and stability of Linux. The Linux Test Project is a collection of tools for testing the Linux kernel and related features."
-HOMEPAGE = "http://ltp.sourceforge.net"
+HOMEPAGE = "https://linux-test-project.github.io/"
 SECTION = "console/utils"
 LICENSE = "GPLv2 & GPLv2+ & LGPLv2+ & LGPLv2.1+ & BSD-2-Clause"
 LIC_FILES_CHKSUM = "\
@@ -30,13 +30,18 @@ CFLAGS_append_mipsarchn64 = " -D__SANE_USERSPACE_TYPES__"
 SRCREV = "ac33ef87f0b9dc56533026435be3ea8c67ce86d2"
 
 SRC_URI = "git://github.com/linux-test-project/ltp.git \
-           file://0004-build-Add-option-to-select-libc-implementation.patch \
-           file://0005-kernel-controllers-Link-with-libfts-explicitly-on-mu.patch \
-           file://0007-fix-__WORDSIZE-undeclared-when-building-with-musl.patch \
-           file://0018-guard-mallocopt-with-__GLIBC__.patch \
-           file://0020-getdents-define-getdents-getdents64-only-for-glibc.patch \
-           file://0036-testcases-network-nfsv4-acl-acl1.c-Security-fix-on-s.patch \
-           file://0001-open_posix_testsuite-mmap24-2-Relax-condition-a-bit.patch \
+           file://0001-build-Add-option-to-select-libc-implementation.patch \
+           file://0002-kernel-controllers-Link-with-libfts-explicitly-on-mu.patch \
+           file://0003-Check-if-__GLIBC_PREREQ-is-defined-before-using-it.patch \
+           file://0004-guard-mallocopt-with-__GLIBC__.patch \
+           file://0005-getdents-define-getdents-getdents64-only-for-glibc.patch \
+           file://0006-rt_tgsigqueueinfo-disable-test-on-musl.patch \
+           file://0007-Fix-test_proc_kill-hanging.patch \
+           file://0008-testcases-network-nfsv4-acl-acl1.c-Security-fix-on-s.patch \
+           file://0009-open_posix_testsuite-mmap24-2-Relax-condition-a-bit.patch \
+           file://0010-shmctl01-don-t-use-hardcoded-index-0-for-SHM_STAT-te.patch \
+           file://0011-direct_io-diotest4-drop-MAP_FIXED.patch \
+           file://0012-getrlimit03-adjust-a-bit-of-code-to-compatiable-with.patch \
            file://overcommit_memory-update-for-mm-fix-false-positive-O.patch \
            "
 
