@@ -38,7 +38,7 @@ FILES_kernel-selftests += "${KST_INSTALL_PATH}/bpf/*.o"
 PACKAGES =+ "kernel-selftests-dbg"
 FILES_kernel-selftests-dbg = "${KST_INSTALL_PATH}/*/.debug /usr/src/debug/*"
 
-RDEPENDS_kernel-selftests = "bash bc ethtool fuse-utils iproute2 iproute2-tc iputils-ping ncurses perl sudo"
+RDEPENDS_kernel-selftests = "bash bc ethtool fuse-utils iproute2 iproute2-tc iputils-ping ncurses nftables perl sudo"
 RDEPENDS_kernel-selftests =+ "python3-core python3-datetime python3-json python3-pprint"
 RDEPENDS_kernel-selftests =+ "util-linux-uuidgen"
 RDEPENDS_kernel-selftests_append_x86 = " cpupower"
