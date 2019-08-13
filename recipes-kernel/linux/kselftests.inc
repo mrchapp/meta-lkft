@@ -40,7 +40,7 @@ FILES_${KERNEL_PACKAGE_NAME}-selftests-dbg = "${KST_INSTALL_PATH}/*/.debug /usr/
 
 RDEPENDS_${KERNEL_PACKAGE_NAME}-selftests = "bash bc ethtool fuse-utils iproute2 iproute2-nstat iproute2-tc iputils-ping ncurses nftables perl sudo"
 RDEPENDS_${KERNEL_PACKAGE_NAME}-selftests =+ "python3-core python3-datetime python3-json python3-pprint"
-RDEPENDS_${KERNEL_PACKAGE_NAME}-selftests =+ "util-linux-uuidgen"
+RDEPENDS_${KERNEL_PACKAGE_NAME}-selftests =+ "util-linux-lscpu util-linux-uuidgen"
 RDEPENDS_${KERNEL_PACKAGE_NAME}-selftests_append_x86 = " cpupower"
 RDEPENDS_${KERNEL_PACKAGE_NAME}-selftests_append_x86-64 = " cpupower"
 RDEPENDS_${KERNEL_PACKAGE_NAME}-selftests_append_libc-glibc = " glibc-utils"
