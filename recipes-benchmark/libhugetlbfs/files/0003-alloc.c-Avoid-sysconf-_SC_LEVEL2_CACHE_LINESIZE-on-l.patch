@@ -6,7 +6,6 @@ Subject: [PATCH] alloc.c: Avoid sysconf(_SC_LEVEL2_CACHE_LINESIZE) on linux
 musl does not have it
 
 Signed-off-by: Khem Raj <raj.khem@gmail.com>
-
 ---
  alloc.c | 15 ++++++++++++++-
  1 file changed, 14 insertions(+), 1 deletion(-)
