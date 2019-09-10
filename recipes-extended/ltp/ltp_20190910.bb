@@ -27,7 +27,7 @@ CFLAGS_append_x86-64 = " -fomit-frame-pointer"
 
 CFLAGS_append_powerpc64 = " -D__SANE_USERSPACE_TYPES__"
 CFLAGS_append_mipsarchn64 = " -D__SANE_USERSPACE_TYPES__"
-SRCREV = "ac33ef87f0b9dc56533026435be3ea8c67ce86d2"
+SRCREV = "bf28ca2c85eb440847fb5bc7331f041f66654ae4"
 
 SRC_URI = "git://github.com/linux-test-project/ltp.git \
            file://0004-build-Add-option-to-select-libc-implementation.patch \
