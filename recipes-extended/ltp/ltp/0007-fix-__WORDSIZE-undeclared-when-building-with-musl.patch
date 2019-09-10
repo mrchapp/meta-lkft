@@ -13,7 +13,7 @@ Signed-off-by: Dengke Du <dengke.du@windriver.com>
  1 file changed, 3 insertions(+)
 
 diff --git a/include/old/test.h b/include/old/test.h
-index b36764d83..cc6f1b551 100644
+index 604254eea..478ce8c0e 100644
 --- a/include/old/test.h
 +++ b/include/old/test.h
 @@ -17,6 +17,9 @@

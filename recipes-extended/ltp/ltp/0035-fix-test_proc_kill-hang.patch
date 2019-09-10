@@ -16,7 +16,7 @@ Upstream-Status: Pending
  1 file changed, 1 insertion(+)
 
 diff --git a/testcases/kernel/controllers/memcg/functional/memcg_lib.sh b/testcases/kernel/controllers/memcg/functional/memcg_lib.sh
-index b785fe3..2918cc5 100755
+index aadaae4d2..deea5d660 100755
 --- a/testcases/kernel/controllers/memcg/functional/memcg_lib.sh
 +++ b/testcases/kernel/controllers/memcg/functional/memcg_lib.sh
 @@ -291,6 +291,7 @@ test_proc_kill()

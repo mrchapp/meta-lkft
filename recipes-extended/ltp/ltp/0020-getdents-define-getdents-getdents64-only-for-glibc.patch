@@ -10,40 +10,41 @@ Signed-off-by: Khem Raj <raj.khem@gmail.com>
 
 Upstream-Status: Pending
 ---
- testcases/kernel/syscalls/getdents/getdents.h | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
+ testcases/kernel/syscalls/getdents/getdents.h | 4 ++++
+ 1 file changed, 4 insertions(+)
 
 diff --git a/testcases/kernel/syscalls/getdents/getdents.h b/testcases/kernel/syscalls/getdents/getdents.h
-index abea655..db63d89 100644
+index c24ed6c99..dadb7c560 100644
 --- a/testcases/kernel/syscalls/getdents/getdents.h
 +++ b/testcases/kernel/syscalls/getdents/getdents.h
-@@ -34,12 +34,13 @@ struct linux_dirent {
- 	char            d_name[];
- };
- 
+@@ -37,6 +37,7 @@ struct linux_dirent {
+ #if HAVE_GETDENTS
+ #include <unistd.h>
+ #else
 +#ifdef __GLIBC__
  static inline int
  getdents(unsigned int fd, struct linux_dirent *dirp, unsigned int size)
  {
- 	return ltp_syscall(__NR_getdents, fd, dirp, size);
+@@ -44,6 +45,7 @@ getdents(unsigned int fd, struct linux_dirent *dirp, unsigned int size)
  }
--
-+#endif
+ 
+ #endif /* HAVE_GETDENTS */
++#endif /* __GLIBC__ */
+ 
  struct linux_dirent64 {
  	uint64_t	d_ino;
- 	int64_t		d_off;
-@@ -48,10 +49,11 @@ struct linux_dirent64 {
- 	char		d_name[];
- };
- 
+@@ -56,10 +58,12 @@ struct linux_dirent64 {
+ #if HAVE_GETDENTS64
+ #include <unistd.h>
+ #else
 +#ifdef __GLIBC__
  static inline int
  getdents64(unsigned int fd, struct linux_dirent64 *dirp64, unsigned int size)
  {
  	return ltp_syscall(__NR_getdents64, fd, dirp64, size);
  }
--
-+#endif
+ #endif /* HAVE_GETDENTS64 */
++#endif /* __GLIBC__ */
  #endif /* GETDENTS_H */
 -- 
 2.7.0

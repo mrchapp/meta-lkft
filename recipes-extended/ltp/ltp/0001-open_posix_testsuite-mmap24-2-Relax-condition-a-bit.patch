@@ -19,11 +19,11 @@ Upstream-Status: Submitted [https://lists.linux.it/pipermail/ltp/2018-October/00
 
 Signed-off-by: Hongzhi.Song <hongzhi.song@windriver.com>
 ---
- .../open_posix_testsuite/conformance/interfaces/mmap/24-2.c    | 10 +++++-----
+ .../conformance/interfaces/mmap/24-2.c                 | 10 +++++-----
  1 file changed, 5 insertions(+), 5 deletions(-)
 
 diff --git a/testcases/open_posix_testsuite/conformance/interfaces/mmap/24-2.c b/testcases/open_posix_testsuite/conformance/interfaces/mmap/24-2.c
-index de51d43..810e5c8 100644
+index 9cf83d9a3..55090a6e6 100644
 --- a/testcases/open_posix_testsuite/conformance/interfaces/mmap/24-2.c
 +++ b/testcases/open_posix_testsuite/conformance/interfaces/mmap/24-2.c
 @@ -7,7 +7,7 @@

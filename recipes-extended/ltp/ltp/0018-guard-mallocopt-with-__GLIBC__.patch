@@ -12,7 +12,7 @@ Upstream-Status: Pending
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/utils/benchmark/ebizzy-0.3/ebizzy.c b/utils/benchmark/ebizzy-0.3/ebizzy.c
-index 5bb8eff..934d951 100644
+index 5bb8eff56..934d951f3 100644
 --- a/utils/benchmark/ebizzy-0.3/ebizzy.c
 +++ b/utils/benchmark/ebizzy-0.3/ebizzy.c
 @@ -215,10 +215,10 @@ static void read_options(int argc, char *argv[])
