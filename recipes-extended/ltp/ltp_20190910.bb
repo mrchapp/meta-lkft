@@ -37,7 +37,6 @@ SRC_URI = "git://github.com/linux-test-project/ltp.git \
            file://0020-getdents-define-getdents-getdents64-only-for-glibc.patch \
            file://0036-testcases-network-nfsv4-acl-acl1.c-Security-fix-on-s.patch \
            file://0001-open_posix_testsuite-mmap24-2-Relax-condition-a-bit.patch \
-           file://overcommit_memory-update-for-mm-fix-false-positive-O.patch \
            "
 
 S = "${WORKDIR}/git"
