@@ -9,16 +9,15 @@ After 'make install', we can use hugeadm utility under DESTDIR.
 Upstream-Status: Submitted
 
 Signed-off-by: Ting Liu <b28495@freescale.com>
-
 ---
- tests/run_tests.py | 12 +++++++++++-
- 1 file changed, 11 insertions(+), 1 deletion(-)
+ tests/run_tests.py | 13 +++++++++++--
+ 1 file changed, 11 insertions(+), 2 deletions(-)
 
 diff --git a/tests/run_tests.py b/tests/run_tests.py
-index 3c95a03..560df6b 100755
+index 018264d..294d7c1 100755
 --- a/tests/run_tests.py
 +++ b/tests/run_tests.py
-@@ -234,9 +234,19 @@ def get_pagesizes():
+@@ -245,11 +245,20 @@ def get_pagesizes():
      Use libhugetlbfs' hugeadm utility to get a list of page sizes that have
      active mount points and at least one huge page allocated to the pool.
      """
@@ -27,15 +26,17 @@ index 3c95a03..560df6b 100755
      sizes = set()
      out = ""
 -    (rc, out) = bash("../obj/hugeadm --page-sizes")
+-    if rc != 0 or out == "":
 +    try:
 +        p = subprocess.Popen("hugeadm --page-sizes", shell=True, env=local_env, stdout=subprocess.PIPE)
 +        rc = p.wait()
 +    except KeyboardInterrupt:
 +        return sizes
 +    except OSError:
-+        return sizes
+         return sizes
 +    out = p.stdout.read().strip()
 +
-     if rc != 0 or out == "": return sizes
++    if rc != 0 or out == "": return sizes
  
-     for size in out.split("\n"): sizes.add(int(size))
+     for size in out.split("\n"):
+         sizes.add(int(size))
