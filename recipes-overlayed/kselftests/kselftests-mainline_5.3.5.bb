@@ -9,8 +9,8 @@ SRC_URI += "\
     file://0001-selftests-lib-allow-to-override-CC-in-the-top-level-Makefile.patch \
 "
 
-SRC_URI[md5sum] = "4c68633ce304b8fbc7be2d3452060c11"
-SRC_URI[sha256sum] = "9890b5a909d316211d045a95f5f0680e39749f2319cb26d7cd067efaa692f858"
+SRC_URI[md5sum] = "f06d82990fc2d82548d1bd5eb05eb322"
+SRC_URI[sha256sum] = "80ed8c5cfc298fdbccbd69f8b919c12b11d8b54d8c20f08fc8c3b1840d1e53f0"
 
 S = "${WORKDIR}/linux-${PV}"
 
