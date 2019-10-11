@@ -1,4 +1,4 @@
-From 6e3058521b50d91d4b0569c4d491c5af5ff798b2 Mon Sep 17 00:00:00 2001
+From d2e59cf4d9076919bfa9eaf81c494ea29b9a93b0 Mon Sep 17 00:00:00 2001
 From: Khem Raj <raj.khem@gmail.com>
 Date: Thu, 7 Jan 2016 18:22:38 +0000
 Subject: [PATCH 05/32] kernel/controllers: Link with libfts explicitly on musl
@@ -6,15 +6,16 @@ Subject: [PATCH 05/32] kernel/controllers: Link with libfts explicitly on musl
 musl does not implement fts like glibc and therefore it depends on
 external implementation for all fts APIs
 
-Signed-off-by: Khem Raj <raj.khem@gmail.com>
 Upstream-Status: Pending
+
+Signed-off-by: Khem Raj <raj.khem@gmail.com>
 ---
  testcases/kernel/controllers/Makefile.inc        | 3 +++
  testcases/kernel/controllers/cpuset/Makefile.inc | 3 +++
  2 files changed, 6 insertions(+)
 
 diff --git a/testcases/kernel/controllers/Makefile.inc b/testcases/kernel/controllers/Makefile.inc
-index b106283..ef5fc0c 100644
+index 4ca0b5ac3..1d85e4d86 100644
 --- a/testcases/kernel/controllers/Makefile.inc
 +++ b/testcases/kernel/controllers/Makefile.inc
 @@ -36,6 +36,9 @@ MAKE_DEPS		:= $(LIB)
@@ -28,7 +29,7 @@ index b106283..ef5fc0c 100644
  INSTALL_TARGETS		?= *.sh
  
 diff --git a/testcases/kernel/controllers/cpuset/Makefile.inc b/testcases/kernel/controllers/cpuset/Makefile.inc
-index 9e002f4..e0fcb9c 100644
+index db6a84305..86dd2a80b 100644
 --- a/testcases/kernel/controllers/cpuset/Makefile.inc
 +++ b/testcases/kernel/controllers/cpuset/Makefile.inc
 @@ -42,6 +42,9 @@ MAKE_DEPS		:= $(LIBCONTROLLERS) $(LIBCPUSET)
@@ -42,5 +43,5 @@ index 9e002f4..e0fcb9c 100644
  INSTALL_TARGETS		?= *.sh
  
 -- 
-2.7.0
+2.20.1
 

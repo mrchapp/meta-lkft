@@ -27,17 +27,17 @@ CFLAGS_append_x86-64 = " -fomit-frame-pointer"
 
 CFLAGS_append_powerpc64 = " -D__SANE_USERSPACE_TYPES__"
 CFLAGS_append_mipsarchn64 = " -D__SANE_USERSPACE_TYPES__"
-SRCREV = "ac33ef87f0b9dc56533026435be3ea8c67ce86d2"
+SRCREV = "c9707b465a08397569920b676345474f44327200"
 
 SRC_URI = "git://github.com/linux-test-project/ltp.git \
-           file://0004-build-Add-option-to-select-libc-implementation.patch \
-           file://0005-kernel-controllers-Link-with-libfts-explicitly-on-mu.patch \
-           file://0007-fix-__WORDSIZE-undeclared-when-building-with-musl.patch \
-           file://0018-guard-mallocopt-with-__GLIBC__.patch \
-           file://0020-getdents-define-getdents-getdents64-only-for-glibc.patch \
-           file://0036-testcases-network-nfsv4-acl-acl1.c-Security-fix-on-s.patch \
-           file://0001-open_posix_testsuite-mmap24-2-Relax-condition-a-bit.patch \
-           file://overcommit_memory-update-for-mm-fix-false-positive-O.patch \
+           file://0001-build-Add-option-to-select-libc-implementation.patch \
+           file://0002-kernel-controllers-Link-with-libfts-explicitly-on-mu.patch \
+           file://0003-Check-if-__GLIBC_PREREQ-is-defined-before-using-it.patch \
+           file://0004-guard-mallocopt-with-__GLIBC__.patch \
+           file://0006-rt_tgsigqueueinfo-disable-test-on-musl.patch \
+           file://0007-Fix-test_proc_kill-hanging.patch \
+           file://0008-testcases-network-nfsv4-acl-acl1.c-Security-fix-on-s.patch \
+           file://0009-open_posix_testsuite-mmap24-2-Relax-condition-a-bit.patch \
            "
 
 S = "${WORKDIR}/git"
