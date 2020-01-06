@@ -38,6 +38,7 @@ SRC_URI = "git://github.com/linux-test-project/ltp.git \
            file://0007-Fix-test_proc_kill-hanging.patch \
            file://0008-testcases-network-nfsv4-acl-acl1.c-Security-fix-on-s.patch \
            file://0009-open_posix_testsuite-mmap24-2-Relax-condition-a-bit.patch \
+           file://pidfd_send_signal03-fix-compile-error-with-Werror-fo.patch \
            "
 
 S = "${WORKDIR}/git"
