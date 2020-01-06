@@ -9,6 +9,6 @@ IMAGE_ROOTFS_EXTRA_SPACE = "1048576"
 IMAGE_ROOTFS_EXTRA_SPACE_am57xx-evm = "262144"
 
 CORE_IMAGE_BASE_INSTALL += " \
-    packagegroup-rpb-tests \
-    packagegroup-rpb-lkft \
+    packagegroup-lkft-testsuites \
+    packagegroup-lkft-tools \
     "
