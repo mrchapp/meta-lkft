@@ -49,4 +49,4 @@ INSANE_SKIP_${KERNEL_PACKAGE_NAME}-selftests = "already-stripped"
 # Ignore the QA error because kselftests/bpf/ requires object files
 # ERROR message:
 # ERROR: kselftests-mainline-4.14-r0 do_package_qa: QA Issue: Architecture did not match (Unknown (0), expected AArch64) on /work/hikey-linaro-linux/kselftests-mainline/4.14-r0/packages-split/kselftests-mainline/opt/kselftests/mainline/bpf/test_tcp_estats.o
-ERROR_QA_remove = "arch"
+ERROR_QA_remove = "already-stripped arch ldflags"
