@@ -5,7 +5,7 @@ LIC_FILES_CHKSUM = "file://LGPL-2.1;md5=2d5025d4aa3495befef8f17206a5b0a1"
 
 DEPENDS = "sysfsutils"
 RDEPENDS_${PN} += "bash python3-core python3-io python3-resource"
-RDEPENDS_${PN}-tests += "bash"
+RDEPENDS_${PN}-tests += "bash python3-core"
 
 PV = "2.22"
 PE = "1"
