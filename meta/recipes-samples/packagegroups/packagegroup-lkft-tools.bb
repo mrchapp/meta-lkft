@@ -37,7 +37,6 @@ RDEPENDS_packagegroup-lkft-tools-python = "\
     python \
     python-misc \
     python-modules \
-    python-numpy \
     python-pexpect \
     python-pip \
     python-pyyaml \
