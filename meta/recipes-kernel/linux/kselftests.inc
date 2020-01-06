@@ -8,7 +8,7 @@ DEPENDS += "elfutils fuse libcap libcap-ng pkgconfig-native popt rsync-native ut
 inherit kernel-arch
 
 export KST_INSTALL_PATH = "/opt/kselftests/default-in-kernel"
-KSELFTESTS_ARGS = "-i -C ${S}/tools/testing/selftests INSTALL_PATH=${D}${KST_INSTALL_PATH} CC="${CC}" LD="${LD}" ARCH=${ARCH}"
+KSELFTESTS_ARGS = "-i -C ${S}/tools/testing/selftests INSTALL_PATH=${D}${KST_INSTALL_PATH} CC="${CC}" LD="${LD}" LDFLAGS="${LDFLAGS}" ARCH=${ARCH}"
 
 do_compile_append() {
     export KBUILD_OUTPUT="${B}"
