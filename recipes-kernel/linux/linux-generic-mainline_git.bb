@@ -3,8 +3,8 @@ require kselftests.inc
 
 DESCRIPTION = "Generic Linux mainline kernel"
 
-PV = "5.4+git${SRCPV}"
-SRCREV_kernel = "219d54332a09e8d8741c1e1982f5eae56099de85"
+PV = "5.5+git${SRCPV}"
+SRCREV_kernel = "d5226fa6dbae0569ee43ecfc08bdcd6770fc4755"
 SRCREV_FORMAT = "kernel"
 
 SRC_URI = "\
