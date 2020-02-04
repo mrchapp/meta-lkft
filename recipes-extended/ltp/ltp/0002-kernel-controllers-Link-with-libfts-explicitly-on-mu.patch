@@ -35,7 +35,7 @@ index db6a84305..86dd2a80b 100644
 @@ -42,6 +42,9 @@ MAKE_DEPS		:= $(LIBCONTROLLERS) $(LIBCPUSET)
  LDFLAGS			+= -L$(abs_builddir)/$(LIBCPUSET_DIR) -L$(abs_builddir)/$(LIBCONTROLLERS_DIR)
  
- LDLIBS			+= -lcpu_set -lcontrollers -lltp
+ LDLIBS			:= -lcpu_set -lcontrollers -lltp $(LDLIBS)
 +ifeq ($(LIBC),musl)
 +LDLIBS			+= -lfts
 +endif
