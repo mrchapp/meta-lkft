@@ -27,7 +27,7 @@ diff --git a/testcases/network/nfsv4/acl/acl1.c b/testcases/network/nfsv4/acl/ac
 index bdf0180da..898b7ca01 100644
 --- a/testcases/network/nfsv4/acl/acl1.c
 +++ b/testcases/network/nfsv4/acl/acl1.c
-@@ -303,7 +303,7 @@ void test_acl_default(char *dir, acl_t acl)
+@@ -302,7 +302,7 @@ void test_acl_default(char *dir, acl_t acl)
  	char *cmd = malloc(256);
  
  	strcpy(cmd, "chmod 7777 ");
