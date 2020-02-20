@@ -10,6 +10,7 @@ SRCREV_FORMAT = "kernel"
 SRC_URI = "\
     git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable-rc.git;protocol=https;branch=linux-4.9.y;name=kernel \
     file://lkft.config;subdir=git/kernel/configs \
+    file://lkft-crypto.config;subdir=git/kernel/configs \
     file://distro-overrides.config;subdir=git/kernel/configs \
     file://systemd.config;subdir=git/kernel/configs \
     file://0001-selftests-lib-add-config-fragment-for-bitmap-printf-.patch \
@@ -25,6 +26,7 @@ S = "${WORKDIR}/git"
 KERNEL_IMAGETYPE ?= "Image"
 KERNEL_CONFIG_FRAGMENTS += "\
     ${S}/kernel/configs/lkft.config \
+    ${S}/kernel/configs/lkft-crypto.config \
     ${S}/kernel/configs/distro-overrides.config \
     ${S}/kernel/configs/systemd.config \
 "

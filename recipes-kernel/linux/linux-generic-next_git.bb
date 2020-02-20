@@ -10,6 +10,7 @@ SRCREV_FORMAT = "kernel"
 SRC_URI = "\
     git://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git;protocol=https;nobranch=1;name=kernel \
     file://lkft.config;subdir=git/kernel/configs \
+    file://lkft-crypto.config;subdir=git/kernel/configs \
     file://distro-overrides.config;subdir=git/kernel/configs \
     file://systemd.config;subdir=git/kernel/configs \
 "
@@ -19,6 +20,7 @@ S = "${WORKDIR}/git"
 KERNEL_IMAGETYPE ?= "Image"
 KERNEL_CONFIG_FRAGMENTS += "\
     ${S}/kernel/configs/lkft.config \
+    ${S}/kernel/configs/lkft-crypto.config \
     ${S}/kernel/configs/distro-overrides.config \
     ${S}/kernel/configs/systemd.config \
 "
