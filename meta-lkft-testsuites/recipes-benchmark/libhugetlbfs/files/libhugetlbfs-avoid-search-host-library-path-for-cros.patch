@@ -7,6 +7,7 @@ Subject: [PATCH] libhugetlbfs: avoid search host library path for cross
 Upstream-Status: Inappropriate [oe-core specific]
 
 Signed-off-by: Chunrong Guo <B40290@freescale.com>
+
 ---
  ldscripts/elf32ppclinux.xB   | 2 +-
  ldscripts/elf32ppclinux.xBDT | 2 +-

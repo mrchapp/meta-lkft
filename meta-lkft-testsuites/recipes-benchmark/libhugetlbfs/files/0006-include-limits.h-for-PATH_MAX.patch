@@ -8,13 +8,14 @@ Fixes
 error: 'PATH_MAX' undeclared
 
 Signed-off-by: Khem Raj <raj.khem@gmail.com>
+
 ---
  hugeadm.c                | 1 +
  tests/gethugepagesizes.c | 1 +
  2 files changed, 2 insertions(+)
 
 diff --git a/hugeadm.c b/hugeadm.c
-index 79a4867..65d5136 100644
+index fe4211d..8db274c 100644
 --- a/hugeadm.c
 +++ b/hugeadm.c
 @@ -33,6 +33,7 @@
