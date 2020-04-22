@@ -8,6 +8,7 @@ Upstream-Status: Submitted
 TESTS_64 is empty, install will fail due to missing file operand
 
 Signed-off-by: Ting Liu <b28495@freescale.com>
+
 ---
  tests/Makefile | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
