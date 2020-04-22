@@ -4,6 +4,7 @@ Date: Thu, 21 Jun 2018 19:48:04 -0700
 Subject: [PATCH] shm.c: Mark glibc specific changes so
 
 Signed-off-by: Khem Raj <raj.khem@gmail.com>
+
 ---
  shm.c | 3 ++-
  1 file changed, 2 insertions(+), 1 deletion(-)
