@@ -5,12 +5,13 @@ Subject: [PATCH] skip checking LIB32 and LIB64 if they point to the same place
 
 Upstream-Status: Inappropriate [oe-core specific]
 Signed-off-by: Ting Liu <b28495@freescale.com>
+
 ---
  Makefile | 1 -
  1 file changed, 1 deletion(-)
 
 diff --git a/Makefile b/Makefile
-index a107a62..4ab5323 100644
+index 51e41f0..373df3c 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -177,7 +177,6 @@ REALLIB32 = $(realpath $(PREFIX)/$(LIB32))
