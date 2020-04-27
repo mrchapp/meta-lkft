@@ -6,14 +6,12 @@ PROVIDES = "${PACKAGES}"
 PACKAGES = "\
     packagegroup-lkft-tools \
     packagegroup-lkft-tools-basic-tools \
-    packagegroup-lkft-tools-python \
     packagegroup-lkft-tools-python3 \
     "
 
 RDEPENDS_packagegroup-lkft-tools = "\
     packagegroup-core-buildessential \
     packagegroup-lkft-tools-basic-tools \
-    packagegroup-lkft-tools-python \
     packagegroup-lkft-tools-python3 \
     "
 
@@ -30,16 +28,6 @@ RDEPENDS_packagegroup-lkft-basic-tools = "\
     tzdata \
     usbutils \
     xz \
-    "
-
-SUMMARY_packagegroup-lkft-tools-python = "Python support for running tests"
-RDEPENDS_packagegroup-lkft-tools-python = "\
-    python \
-    python-misc \
-    python-modules \
-    python-pexpect \
-    python-pip \
-    python-pyyaml \
     "
 
 SUMMARY_packagegroup-lkft-tools-python3 = "Python3 support for running tests"
