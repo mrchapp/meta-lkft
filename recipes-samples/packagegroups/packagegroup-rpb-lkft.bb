@@ -7,6 +7,7 @@ RDEPENDS_packagegroup-rpb-lkft = "\
     git \
     grep \
     haveged \
+    jq \
     kernel-selftests \
     kselftests-mainline \
     kselftests-next \
