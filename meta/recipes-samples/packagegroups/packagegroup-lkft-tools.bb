@@ -21,6 +21,7 @@ RDEPENDS_packagegroup-lkft-basic-tools = "\
     git \
     grep \
     haveged \
+    jq \
     libgpiod \
     ${@bb.utils.contains("TUNE_ARCH", "arm", "", "numactl", d)} \
     perf \
