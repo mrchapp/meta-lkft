@@ -12,13 +12,13 @@ PACKAGES = "\
 
 RDEPENDS_packagegroup-lkft-tools = "\
     packagegroup-core-buildessential \
-    packagegroup-lkft-tools-basic-tools \
+    packagegroup-lkft-tools-basics \
     packagegroup-lkft-tools-python \
     packagegroup-lkft-tools-python3 \
     "
 
 SUMMARY_RDEPENDS_packagegroup-lkft-tools = "Basic tools and libraries for LKFT"
-RDEPENDS_packagegroup-lkft-basic-tools = "\
+RDEPENDS_packagegroup-lkft-tools-basics = "\
     cpupower \
     git \
     grep \
