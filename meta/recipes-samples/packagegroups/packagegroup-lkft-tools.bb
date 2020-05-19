@@ -5,7 +5,7 @@ inherit packagegroup
 PROVIDES = "${PACKAGES}"
 PACKAGES = "\
     packagegroup-lkft-tools \
-    packagegroup-lkft-tools-basic-tools \
+    packagegroup-lkft-tools-basics \
     packagegroup-lkft-tools-python3 \
     "
 
