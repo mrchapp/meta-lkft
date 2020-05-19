@@ -1,4 +1,4 @@
-From bfdecf136245ed5d66c05ecd24474b85e8bef5cb Mon Sep 17 00:00:00 2001
+From f4fafbdffae3a63c81f65cef98c72dda26283e06 Mon Sep 17 00:00:00 2001
 From: Dengke Du <dengke.du@windriver.com>
 Date: Wed, 8 Feb 2017 16:17:17 +0800
 Subject: [PATCH] Fix test_proc_kill hanging
@@ -16,7 +16,7 @@ Signed-off-by: Dengke Du <dengke.du@windriver.com>
  1 file changed, 1 insertion(+)
 
 diff --git a/testcases/kernel/controllers/memcg/functional/memcg_lib.sh b/testcases/kernel/controllers/memcg/functional/memcg_lib.sh
-index aadaae4d2..deea5d660 100755
+index aadaae4..deea5d6 100755
 --- a/testcases/kernel/controllers/memcg/functional/memcg_lib.sh
 +++ b/testcases/kernel/controllers/memcg/functional/memcg_lib.sh
 @@ -291,6 +291,7 @@ test_proc_kill()
@@ -28,5 +28,5 @@ index aadaae4d2..deea5d660 100755
  	signal_memcg_process $pid $3
  
 -- 
-2.20.1
+2.7.4
 
