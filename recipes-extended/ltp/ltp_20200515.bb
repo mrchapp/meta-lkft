@@ -17,6 +17,7 @@ LIC_FILES_CHKSUM = "\
 DEPENDS = "attr libaio libcap acl openssl zip-native"
 DEPENDS_append_libc-musl = " fts "
 EXTRA_OEMAKE_append_libc-musl = " LIBC=musl "
+EXTRA_OECONF_append_libc-musl = " LIBS=-lfts "
 
 # since ltp contains x86-64 assembler which uses the frame-pointer register,
 # set -fomit-frame-pointer x86-64 to handle cases where optimisation
@@ -26,27 +27,23 @@ CFLAGS_append_x86-64 = " -fomit-frame-pointer"
 
 CFLAGS_append_powerpc64 = " -D__SANE_USERSPACE_TYPES__"
 CFLAGS_append_mipsarchn64 = " -D__SANE_USERSPACE_TYPES__"
-SRCREV = "4079aaf264d0e9ead042b59d1c5f4e643620d0d5"
+SRCREV = "0d79a93e6ca44d9bc95973faea6bcd7b0c6d1f43"
 
 SRC_URI = "git://github.com/linux-test-project/ltp.git \
            file://0001-build-Add-option-to-select-libc-implementation.patch \
-           file://0002-kernel-controllers-Link-with-libfts-explicitly-on-mu.patch \
-           file://0003-Check-if-__GLIBC_PREREQ-is-defined-before-using-it.patch \
            file://0004-guard-mallocopt-with-__GLIBC__.patch \
-           file://0005-rt_tgsigqueueinfo-disable-test-on-musl.patch \
-           file://0006-Fix-test_proc_kill-hanging.patch \
-           file://0007-testcases-network-nfsv4-acl-acl1.c-Security-fix-on-s.patch \
-           file://0008-open_posix_testsuite-mmap24-2-Relax-condition-a-bit.patch \
+           file://0007-Fix-test_proc_kill-hanging.patch \
+           file://0001-Add-more-musl-exclusions.patch \
            "
 
 S = "${WORKDIR}/git"
 
-inherit autotools-brokensep
+inherit autotools-brokensep pkgconfig
 
 TARGET_CC_ARCH += "${LDFLAGS}"
 
-export prefix = "/opt/ltp"
-export exec_prefix = "/opt/ltp"
+export prefix = "/opt/${PN}"
+export exec_prefix = "/opt/${PN}"
 
 PACKAGECONFIG[numa] = "--with-numa, --without-numa, numactl,"
 EXTRA_AUTORECONF += "-I ${S}/testcases/realtime/m4"
@@ -55,7 +52,7 @@ EXTRA_OECONF = " --with-power-management-testsuite --with-realtime-testsuite --w
 EXTRA_OECONF += " --without-tirpc "
 
 do_install(){
-    install -d ${D}/opt/ltp/
+    install -d ${D}${prefix}/
     oe_runmake DESTDIR=${D} SKIP_IDCHECK=1 install
 
     # fixup not deploy STPfailure_report.pl to avoid confusing about it fails to run
@@ -64,15 +61,19 @@ do_install(){
     # runs on the OSDL's Scaleable Test Platform (STP) and it mainly accesses
     # http://khack.osdl.org to retrieve ltp test results run on
     # OSDL's Scaleable Test Platform, but now http://khack.osdl.org unaccessible
-    rm -rf ${D}/opt/ltp/bin/STPfailure_report.pl
+    rm -rf ${D}${prefix}/bin/STPfailure_report.pl
 
-    # Copy POSIX test suite into ${D}/opt/ltp/testcases by manual
-    cp -r testcases/open_posix_testsuite ${D}/opt/ltp/testcases
+    # Copy POSIX test suite into ${D}${prefix}/testcases by manual
+    cp -r testcases/open_posix_testsuite ${D}${prefix}/testcases
+
+    # Makefile were configured in the build system
+    find ${D}${prefix} -name Makefile | xargs -n 1 sed -i \
+         -e 's@[^ ]*-fdebug-prefix-map=[^ "]*@@g' \
+         -e 's@[^ ]*-fmacro-prefix-map=[^ "]*@@g' \
+         -e 's@[^ ]*--sysroot=[^ "]*@@g' 
 }
 
 RDEPENDS_${PN} = "\
-    acl \
-    at \
     attr \
     bash \
     cpio \
@@ -87,7 +88,6 @@ RDEPENDS_${PN} = "\
     ldd \
     libaio \
     logrotate \
-    net-tools \
     perl \
     python3-core \
     procps \
@@ -98,10 +98,10 @@ RDEPENDS_${PN} = "\
     tar \
 "
 
-FILES_${PN} += "/opt/ltp/* /opt/ltp/runtest/* /opt/ltp/scenario_groups/* /opt/ltp/testcases/bin/* /opt/ltp/testcases/bin/*/bin/* /opt/ltp/testscripts/* /opt/ltp/testcases/open_posix_testsuite/* /opt/ltp/testcases/open_posix_testsuite/conformance/* /opt/ltp/testcases/open_posix_testsuite/Documentation/* /opt/ltp/testcases/open_posix_testsuite/functional/* /opt/ltp/testcases/open_posix_testsuite/include/* /opt/ltp/testcases/open_posix_testsuite/scripts/* /opt/ltp/testcases/open_posix_testsuite/stress/* /opt/ltp/testcases/open_posix_testsuite/tools/* /opt/ltp/testcases/data/nm01/lib.a /opt/ltp/lib/libmem.a"
+FILES_${PN} += "${prefix}/* ${prefix}/runtest/* ${prefix}/scenario_groups/* ${prefix}/testcases/bin/* ${prefix}/testcases/bin/*/bin/* ${prefix}/testscripts/* ${prefix}/testcases/open_posix_testsuite/* ${prefix}/testcases/open_posix_testsuite/conformance/* ${prefix}/testcases/open_posix_testsuite/Documentation/* ${prefix}/testcases/open_posix_testsuite/functional/* ${prefix}/testcases/open_posix_testsuite/include/* ${prefix}/testcases/open_posix_testsuite/scripts/* ${prefix}/testcases/open_posix_testsuite/stress/* ${prefix}/testcases/open_posix_testsuite/tools/* ${prefix}/testcases/data/nm01/lib.a ${prefix}/lib/libmem.a"
 
 # Avoid stripping some generated binaries otherwise some of the ltp tests such as ldd01 & nm01 fail
-INHIBIT_PACKAGE_STRIP_FILES = "/opt/ltp/testcases/bin/nm01 /opt/ltp/testcases/bin/ldd01"
+INHIBIT_PACKAGE_STRIP_FILES = "${prefix}/testcases/bin/nm01 ${prefix}/testcases/bin/ldd01"
 INSANE_SKIP_${PN} += "already-stripped staticdev"
 
 # Avoid file dependency scans, as LTP checks for things that may or may not
