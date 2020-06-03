@@ -10,7 +10,7 @@ IMAGE_ROOTFS_EXTRA_SPACE_am57xx-evm = "262144"
 
 LICENSE = "MIT"
 
-inherit core-image features_check extrausers
+inherit core-image distro_features_check extrausers
 
 CORE_IMAGE_BASE_INSTALL += " \
     kernel-modules \
