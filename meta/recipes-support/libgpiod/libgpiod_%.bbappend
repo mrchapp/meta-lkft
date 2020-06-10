@@ -1,1 +1,1 @@
-PACKAGECONFIG = "tools tests"
+PACKAGECONFIG = "tests"
