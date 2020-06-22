@@ -3,3 +3,6 @@
 # ("libbpf: Move bpf_{helpers, helper_defs, endian, tracing}.h into
 # libbpf").
 PERF_SRC += "scripts"
+
+RDEPENDS_${PN} += "libcap"
+RDEPENDS_${PN}-python += "libcap"
