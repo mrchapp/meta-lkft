@@ -8,6 +8,9 @@ RDEPENDS_packagegroup-rpb-lkft = "\
     git \
     grep \
     haveged \
+    igt-gpu-tools \
+    igt-gpu-tools-benchmarks \
+    igt-gpu-tools-tests \
     jq \
     kernel-selftests \
     kselftests-mainline \
