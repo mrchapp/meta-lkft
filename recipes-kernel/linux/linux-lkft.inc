@@ -224,6 +224,10 @@ DEPENDS += "coreutils-native"
 RDEPENDS_${KERNEL_PACKAGE_NAME}-image_append = " ${KERNEL_PACKAGE_NAME}-devicetree"
 RRECOMMENDS_${KERNEL_PACKAGE_NAME}-image_append = " ${KERNEL_PACKAGE_NAME}-devicetree-overlays"
 
+# make[3]: *** [scripts/extract-cert] Error 1
+DEPENDS += "openssl-native"
+HOST_EXTRACFLAGS += "-I${STAGING_INCDIR_NATIVE}"
+
 # Automatically depend on lzop/lz4-native if CONFIG_KERNEL_LZO/LZ4 is enabled
 python () {
     try:
