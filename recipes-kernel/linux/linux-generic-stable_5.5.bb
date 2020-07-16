@@ -1,15 +1,16 @@
 require linux-lkft.inc
 require kselftests.inc
 
-DESCRIPTION = "Generic Linux Stable RC 5.2 LTS kernel"
+DESCRIPTION = "Generic Linux Stable RC 5.5 LTS kernel"
 
-PV = "5.2+git${SRCPV}"
-SRCREV_kernel = "0ecfebd2b52404ae0c54a878c872bb93363ada36"
+PV = "5.5+git${SRCPV}"
+SRCREV_kernel = "d5226fa6dbae0569ee43ecfc08bdcd6770fc4755"
 SRCREV_FORMAT = "kernel"
 
 SRC_URI = "\
-    git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable-rc.git;protocol=https;branch=linux-5.2.y;name=kernel \
+    git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git;protocol=https;branch=linux-5.5.y;name=kernel \
     file://lkft.config;subdir=git/kernel/configs \
+    file://lkft-crypto.config;subdir=git/kernel/configs \
     file://distro-overrides.config;subdir=git/kernel/configs \
     file://systemd.config;subdir=git/kernel/configs \
 "
@@ -19,6 +20,7 @@ S = "${WORKDIR}/git"
 KERNEL_IMAGETYPE ?= "Image"
 KERNEL_CONFIG_FRAGMENTS += "\
     ${S}/kernel/configs/lkft.config \
+    ${S}/kernel/configs/lkft-crypto.config \
     ${S}/kernel/configs/distro-overrides.config \
     ${S}/kernel/configs/systemd.config \
 "
@@ -111,7 +113,7 @@ do_deploy_append() {
     # |   File "/usr/bin/skales/dtbTool", line 239, in __init__
     # |     self.msm_id[0] = soc_ids[matches['soc']] | (foundry << 16)
     # | KeyError: u'ipq8074'
-    ( cd ${B}/arch/arm64/boot/dts/qcom/ && rm -vf *ipq8074* *qcs404* *sdm845* ) || true
+    ( cd ${B}/arch/arm64/boot/dts/qcom/ && rm -vf *ipq8074* *qcs404* *sdm845* *sm8150* *sc7180* ) || true
 }
 
 require machine-specific-hooks.inc

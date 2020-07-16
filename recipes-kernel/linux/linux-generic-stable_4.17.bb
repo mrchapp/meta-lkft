@@ -1,14 +1,14 @@
 require linux-lkft.inc
 require kselftests.inc
 
-DESCRIPTION = "Generic Linux Stable RC 4.15 kernel"
+DESCRIPTION = "Generic Linux Stable RC 4.17 LTS kernel"
 
-PV = "4.15+git${SRCPV}"
-SRCREV_kernel = "d8a5b80568a9cb66810e75b182018e9edb68e8ff"
+PV = "4.17+git${SRCPV}"
+SRCREV_kernel = "9d1e6d8bc07197ac09395dc55e95030ff92e4dba"
 SRCREV_FORMAT = "kernel"
 
 SRC_URI = "\
-    git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable-rc.git;protocol=https;branch=linux-4.15.y;name=kernel \
+    git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git;protocol=https;branch=linux-4.17.y;name=kernel \
     file://lkft.config;subdir=git/kernel/configs \
     file://distro-overrides.config;subdir=git/kernel/configs \
     file://systemd.config;subdir=git/kernel/configs \
@@ -35,12 +35,16 @@ do_configure() {
     case "${HOST_ARCH}" in
       aarch64)
         cp ${S}/arch/arm64/configs/defconfig ${B}/.config
+        # https://bugs.linaro.org/show_bug.cgi?id=3769
+        echo 'CONFIG_ARM64_MODULE_PLTS=y' >> ${B}/.config
       ;;
       arm)
         cp ${S}/arch/arm/configs/multi_v7_defconfig ${B}/.config
         echo 'CONFIG_ARM_TI_CPUFREQ=y' >> ${B}/.config
         echo 'CONFIG_SERIAL_8250_OMAP=y' >> ${B}/.config
         echo 'CONFIG_POSIX_MQUEUE=y' >> ${B}/.config
+        # https://bugs.linaro.org/show_bug.cgi?id=3769
+        echo 'CONFIG_ARM_MODULE_PLTS=y' >> ${B}/.config
       ;;
       x86_64)
         cp ${S}/arch/x86/configs/x86_64_defconfig ${B}/.config

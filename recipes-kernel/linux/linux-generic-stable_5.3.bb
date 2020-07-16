@@ -8,7 +8,7 @@ SRCREV_kernel = "4d856f72c10ecb060868ed10ff1b1453943fc6c8"
 SRCREV_FORMAT = "kernel"
 
 SRC_URI = "\
-    git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable-rc.git;protocol=https;branch=linux-5.3.y;name=kernel \
+    git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git;protocol=https;branch=linux-5.3.y;name=kernel \
     file://lkft.config;subdir=git/kernel/configs \
     file://distro-overrides.config;subdir=git/kernel/configs \
     file://systemd.config;subdir=git/kernel/configs \

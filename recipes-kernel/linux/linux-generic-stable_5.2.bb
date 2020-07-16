@@ -1,14 +1,14 @@
 require linux-lkft.inc
 require kselftests.inc
 
-DESCRIPTION = "Generic Linux Stable RC 4.17 LTS kernel"
+DESCRIPTION = "Generic Linux Stable RC 5.2 LTS kernel"
 
-PV = "4.17+git${SRCPV}"
-SRCREV_kernel = "9d1e6d8bc07197ac09395dc55e95030ff92e4dba"
+PV = "5.2+git${SRCPV}"
+SRCREV_kernel = "0ecfebd2b52404ae0c54a878c872bb93363ada36"
 SRCREV_FORMAT = "kernel"
 
 SRC_URI = "\
-    git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable-rc.git;protocol=https;branch=linux-4.17.y;name=kernel \
+    git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git;protocol=https;branch=linux-5.2.y;name=kernel \
     file://lkft.config;subdir=git/kernel/configs \
     file://distro-overrides.config;subdir=git/kernel/configs \
     file://systemd.config;subdir=git/kernel/configs \
@@ -43,8 +43,6 @@ do_configure() {
         echo 'CONFIG_ARM_TI_CPUFREQ=y' >> ${B}/.config
         echo 'CONFIG_SERIAL_8250_OMAP=y' >> ${B}/.config
         echo 'CONFIG_POSIX_MQUEUE=y' >> ${B}/.config
-        # https://bugs.linaro.org/show_bug.cgi?id=3769
-        echo 'CONFIG_ARM_MODULE_PLTS=y' >> ${B}/.config
       ;;
       x86_64)
         cp ${S}/arch/x86/configs/x86_64_defconfig ${B}/.config
@@ -113,7 +111,7 @@ do_deploy_append() {
     # |   File "/usr/bin/skales/dtbTool", line 239, in __init__
     # |     self.msm_id[0] = soc_ids[matches['soc']] | (foundry << 16)
     # | KeyError: u'ipq8074'
-    ( cd ${B}/arch/arm64/boot/dts/qcom/ && rm -vf *ipq8074* *sdm845* ) || true
+    ( cd ${B}/arch/arm64/boot/dts/qcom/ && rm -vf *ipq8074* *qcs404* *sdm845* ) || true
 }
 
 require machine-specific-hooks.inc
