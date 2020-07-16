@@ -29,10 +29,6 @@ KERNEL_CONFIG_FRAGMENTS += "\
     ${S}/kernel/configs/systemd.config \
 "
 
-# make[3]: *** [scripts/extract-cert] Error 1
-DEPENDS += "openssl-native"
-HOST_EXTRACFLAGS += "-I${STAGING_INCDIR_NATIVE}"
-
 do_configure() {
     touch ${B}/.scmversion ${S}/.scmversion
 
