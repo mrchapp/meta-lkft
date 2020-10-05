@@ -24,6 +24,7 @@ RDEPENDS_packagegroup-lkft-tools-basics = "\
     jq \
     libgpiod \
     ${@bb.utils.contains("TUNE_ARCH", "arm", "", "numactl", d)} \
+    net-snmp \
     perf \
     qemu \
     tzdata \
