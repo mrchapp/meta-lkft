@@ -16,6 +16,7 @@ RDEPENDS_packagegroup-rpb-lkft = "\
     kselftests-mainline \
     kselftests-next \
     libgpiod \
+    net-snmp \
     ${@bb.utils.contains("TUNE_ARCH", "arm", "", "numactl", d)} \
     perf \
     qemu \
