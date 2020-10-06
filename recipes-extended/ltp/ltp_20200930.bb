@@ -31,11 +31,11 @@ SRCREV = "0d79a93e6ca44d9bc95973faea6bcd7b0c6d1f43"
 
 SRC_URI = "git://github.com/linux-test-project/ltp.git \
            file://0001-build-Add-option-to-select-libc-implementation.patch \
-           file://0004-guard-mallocopt-with-__GLIBC__.patch \
            file://0007-Fix-test_proc_kill-hanging.patch \
            file://0001-Add-more-musl-exclusions.patch \
-           file://0001-ptrace01-Fix-missing-format-string.patch \
+           file://0004-Remove-OOM-tests-from-runtest-mm.patch \
            "
+
 
 S = "${WORKDIR}/git"
 
