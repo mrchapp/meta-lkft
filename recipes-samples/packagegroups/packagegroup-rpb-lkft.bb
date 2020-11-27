@@ -5,6 +5,7 @@ inherit packagegroup
 # contains basic dependencies for LKFT
 RDEPENDS_packagegroup-rpb-lkft = "\
     android-kernel-tests \
+    fwts \
     git \
     grep \
     haveged \
