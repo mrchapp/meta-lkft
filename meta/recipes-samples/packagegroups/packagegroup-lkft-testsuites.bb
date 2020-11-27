@@ -4,6 +4,7 @@ inherit packagegroup
 
 SUMMARY_RDEPENDS_packagegroup-lkft-testsuites = "Test suites used by LKFT"
 RDEPENDS_packagegroup-lkft-testsuites = "\
+    fwts \
     igt-gpu-tools \
     igt-gpu-tools-benchmarks \
     igt-gpu-tools-tests \
