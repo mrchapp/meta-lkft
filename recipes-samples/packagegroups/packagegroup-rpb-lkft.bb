@@ -5,7 +5,7 @@ inherit packagegroup
 # contains basic dependencies for LKFT
 RDEPENDS_packagegroup-rpb-lkft = "\
     android-kernel-tests \
-    fwts \
+    ${@bb.utils.contains("TUNE_ARCH", "arm", "", "fwts", d)} \
     git \
     grep \
     haveged \
