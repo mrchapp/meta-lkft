@@ -15,17 +15,13 @@ inherit autotools gettext pkgconfig
 PACKAGECONFIG ??= "media-ctl"
 PACKAGECONFIG[media-ctl] = "--enable-v4l-utils,--disable-v4l-utils,,"
 
-SRC_URI = "http://linuxtv.org/downloads/v4l-utils/v4l-utils-${PV}.tar.bz2 \
-           file://0001-Revert-media-ctl-Don-t-install-libmediactl-and-libv4.patch \
-           file://mediactl-pkgconfig.patch \
-           file://export-mediactl-headers.patch \
-           file://0002-contrib-test-Link-mc_nextgen_test-with-libargp-if-ne.patch \
-           file://0005-Define-error_t-and-include-sys-types.h.patch \
-           file://0006-Fix-build-on-32bit-arches-with-64bit-time_t.patch \
-           file://0007-Do-not-use-getsubopt.patch \
-           "
-SRC_URI[md5sum] = "ff2dd75970683be9a301ed949b3372b3"
-SRC_URI[sha256sum] = "25fc42253722401f8742f04dc50a444dfa9b75378e7d09b55035bcbb44c5f342"
+PV = "1.18.1+git"
+
+SRC_URI = "git://git.linuxtv.org/v4l-utils.git;protocol=https;nobranch=1"
+SRCREV = "dea6d59b4719eb247aaad1ec386c39197ddb3f61"
+
+S = "${WORKDIR}/git"
+B = "${S}"
 
 EXTRA_OECONF = "--disable-qv4l2 --enable-shared --with-udevdir=${base_libdir}/udev"
 
@@ -54,3 +50,7 @@ FILES_libv4l-dev += "${includedir} ${libdir}/pkgconfig \
 
 PARALLEL_MAKE_class-native = ""
 BBCLASSEXTEND = "native"
+
+do_configure_prepend() {
+    ${S}/bootstrap.sh
+}
