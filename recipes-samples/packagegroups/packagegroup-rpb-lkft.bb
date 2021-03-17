@@ -20,6 +20,7 @@ RDEPENDS_packagegroup-rpb-lkft = "\
     net-snmp \
     ${@bb.utils.contains("TUNE_ARCH", "arm", "", "numactl", d)} \
     perf \
+    perf-tests \
     qemu \
     tzdata \
     xz \
