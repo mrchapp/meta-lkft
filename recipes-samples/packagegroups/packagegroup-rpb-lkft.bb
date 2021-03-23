@@ -19,6 +19,7 @@ RDEPENDS_packagegroup-rpb-lkft = "\
     libgpiod \
     net-snmp \
     ${@bb.utils.contains("TUNE_ARCH", "arm", "", "numactl", d)} \
+    packetdrill \
     perf \
     perf-tests \
     qemu \
