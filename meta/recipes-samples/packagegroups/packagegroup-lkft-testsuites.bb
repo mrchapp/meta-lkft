@@ -13,6 +13,7 @@ RDEPENDS_packagegroup-lkft-testsuites = "\
     kselftests-next \
     libhugetlbfs-tests \
     ltp \
+    packetdrill \
     perf-tests \
     s-suite \
     "
