@@ -13,7 +13,7 @@ RDEPENDS_packagegroup-lkft-testsuites = "\
     kselftests-next \
     libhugetlbfs-tests \
     ltp \
-    packetdrill \
+    ${@bb.utils.contains_any("TUNE_ARCH", "arm i686", "", "packetdrill", d)} \
     perf-tests \
     s-suite \
     "
