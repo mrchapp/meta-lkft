@@ -7,3 +7,7 @@ PERF_SRC += "scripts"
 RDEPENDS_${PN} += "libcap"
 RDEPENDS_${PN}-python += "libcap"
 RDEPENDS_${PN}-tests += "bash"
+
+PACKAGECONFIG[coresight] = "CORESIGHT=1,,opencsd"
+
+PACKAGECONFIG_append = " coresight"
